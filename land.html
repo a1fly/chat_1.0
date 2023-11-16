@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试网页</title>
+    <style>
+        body {
+            background-color: #f3f3f3; /* 设置背景颜色 */
+            font-family: Arial, sans-serif; /* 设置字体 */
+
+        }
+
+        h1 {
+            color: #333; /* 设置标题颜色 */
+            text-align: center; /* 居中对齐 */
+        }
+
+        form {
+            margin: 0 auto; /* 水平居中对齐 */
+            width: 300px; /* 设置表单最大宽度 */
+            padding: 20px; /* 设置内边距 */
+            background-color: #FFF; /* 设置表单背景颜色 */
+            border-radius: 5px; /* 设置边框圆角 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+        }
+
+        label {
+            display: block; /* 将label元素转换为块级元素 */
+            margin-bottom: 20px; /* 设置下方外边距 */
+        }
+
+        input[type="text"] {
+            width: 100%; /* 设置输入框宽度 */
+            padding: 10px; /* 设置内边距 */
+            border: 1px solid #FF00FF; /* 设置边框样式 */
+            border-radius: 4px; /* 设置边框圆角 */
+            box-sizing: border-box; /* 让输入框包含内边距和边框在内 */
+
+        }
+        input[type="password"] {
+            width: 100%; /* 设置输入框宽度 */
+            padding: 10px; /* 设置内边距 */
+            border: 1px solid #FF00FF; /* 设置边框样式 */
+            border-radius: 4px; /* 设置边框圆角 */
+            box-sizing: border-box; /* 让输入框包含内边距和边框在内 */
+
+        }
+
+        input[type="submit"] {
+            width: 100%; /* 设置提交按钮宽度 */
+            padding: 10px; /* 设置内边距 */
+            background-color: #4caf50; /* 设置背景颜色 */
+            color: #fff; /* 设置文字颜色 */
+            border: none; /* 移除边框 */
+            border-radius: 4px; /* 设置边框圆角 */
+            cursor: pointer; /* 设置鼠标样式为手型 */
+            margin-bottom: 1px;
+            margin-top: 30px;
+            margin-right: 5%;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #FF9900; /* 鼠标悬停时修改背景颜色 */
+        }
+        input[type="submit"][value="注册"] {
+            width: 100%; /* 设置提交按钮宽度 */
+            padding: 10px; /* 设置内边距 */
+            background-color: #4caf50; /* 设置背景颜色 */
+            color: #fff; /* 设置文字颜色 */
+            border: none; /* 移除边框 */
+            border-radius: 4px; /* 设置边框圆角 */
+            cursor: pointer; /* 设置鼠标样式为手型 */
+        }
+
+        input[type="submit"][value="注册"]:hover{
+            background-color: #FF9900; /* 鼠标悬停时修改背景颜色 */
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>登陆/注册</h1>
+<form action="/" method="post">
+    <label for="account">请输入账号：</label>
+    <input type="text" id="account" name="account">
+<div>
+    <label for="account">请输入密码：</label>
+    <input type="password" id="password" name="password">
+</div>
+    <input type="submit" name="action" value="登录">
+    <input type="submit" name="action" value="注册">
+</form>
+
+
+<h1>
+    {{warning}}
+
+</h1>
+
+
+</body>
+</html>
+

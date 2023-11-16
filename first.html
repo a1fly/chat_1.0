@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  <title>聊天室 </title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #0;
+    }
+
+    #message-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+      width: 400px;
+      overflow-y: auto;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: #Fff;
+      box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1);
+      height: 350px;
+    }
+
+    #message-list li {
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      padding: 10px;
+      border-bottom: 2px solid #eee;
+    }
+
+    #message-input {
+      padding: 10px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 60px;
+      background-color: #FF9900;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+
+    button:hover {
+      background-color: #CCCCCC;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+</head>
+<body>
+  <h1>聊天室</h1>
+  <h2>欢迎{{user_account}}  </h2>
+  <ul id="message-list">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  <input type="text" id="message-input" placeholder="输入消息">
+  <button onclick="sendMessage()">发送</button>
+  <script>
+        var socket = io();
+    socket.on('connect', function() {
+      console.log("Hello");
+    });
+    socket.on('update_messages', function(message) {
+      var messageList = document.getElementById('message-list');
+      var newMessage = document.createElement('li');
+      newMessage.appendChild(document.createTextNode(message));
+      messageList.appendChild(newMessage);
+    });
+    function sendMessage() {
+      var messageInput = document.getElementById('message-input');
+      var message = messageInput.value;
+      socket.emit('message', message);
+      messageInput.value = '';
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <style>-->
+<!--        /* 样式 */-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            display: flex;-->
+<!--            height: 100vh;-->
+<!--        }-->
+
+<!--        .friend-list {-->
+<!--            width: 200px;-->
+<!--            background-color: #f2f2f2;-->
+<!--            padding: 20px;-->
+<!--        }-->
+
+<!--        .friend-item {-->
+<!--            padding: 10px;-->
+<!--            border-bottom: 1px solid #ccc;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .friend-item:hover {-->
+<!--            background-color: #e0e0e0;-->
+<!--        }-->
+
+<!--        .chat-window {-->
+<!--            flex: 1;-->
+<!--            padding: 20px;-->
+<!--        }-->
+
+<!--        /* 模拟消息样式 */-->
+<!--        .message {-->
+<!--            background-color: #e0f7fa;-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 10px;-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <title>好友列表</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="container">-->
+<!--        <div class="friend-list">-->
+<!--    <div class="friend-item" onclick="openChatWindow('好友1')">好友1</div>-->
+<!--    <div class="friend-item" onclick="openChatWindow('好友2')">好友2</div>-->
+<!--    <div class="friend-item" onclick="openChatWindow('好友3')">好友3</div>-->
+<!--    <div class="friend-item" onclick="openChatWindow('好友4')">好友4</div>-->
+<!--    <div class="friend-item" onclick="openChatWindow('好友5')">好友5</div>-->
+<!--        </div>-->
+
+<!--<div id="log"></div>-->
+
+<!--<script>-->
+<!--    function openChatWindow(friendName) {-->
+<!--        // 在这里执行打开聊天窗口的操作，可以是页面导航或其他交互-->
+<!--        var logElement = document.getElementById('log');-->
+<!--        logElement.textContent = '打开与好友 ' + friendName + ' 的聊天窗口';-->
+<!--    }-->
+<!--</script>-->
+<!--        <div class="chat-window">-->
+<!--            <div class="message">好友1：你好！</div>-->
+<!--            <div class="message">我：你好！</div>-->
+<!--            <div class="message">好友1：最近过得怎么样？</div>-->
+<!--            <div class="message">我：还不错，你呢？</div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
